@@ -4,9 +4,12 @@
 #include "bnl.h"
 
 
-void main(char **argv, int argc){
+int main(int argc, char **argv){
 
 
+    bnl *z;
 
+    z = init(10);
 
+    return 0;
 }
