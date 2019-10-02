@@ -4,7 +4,7 @@
 
 
 
-
+// initalise a binary number structure  with length len
 bnl *init(int len){
     
     bnl *p;

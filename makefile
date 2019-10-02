@@ -1,5 +1,5 @@
 emain : main.c bnl.o
-	gcc  -Wall main.c bnl.o -o emain
+	gcc  main.c bnl.o -o emain
 
 
 bnl.o : bnl.c
