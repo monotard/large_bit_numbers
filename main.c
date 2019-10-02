@@ -8,30 +8,14 @@
 int main(int argc, char **argv){
 
 
-    bnl *z;
+    bnl *z, *y;
     char *a;
     char *b;
     
 
-    
-    z = init(10);
-    printf("%d\n", z->len);
-
-    a = (char *)malloc(sizeof(char) * 3);
-    
-
-    a[0] = 'A';
-    a[1] = '0';
-    a[2] =  NULL;
-
-    while(*a != NULL){
-        printf("%c ", *a++);
-    }
-
-    printf("\ndone\n");
-    
-    if (*a==NULL)
-        printf("yes its null\n");
+    y = init(100);
+     
+    printf("%c \n", *(y->nstr));
     return 0;
 
 }

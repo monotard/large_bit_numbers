@@ -17,6 +17,8 @@ bnl *init(int len){
         return NULL;
 
     p->len = len;
+    p->nstr = n;
+    *(p->nstr) = 'A';
     return p;
     
 
@@ -25,19 +27,35 @@ bnl *init(int len){
 //create a new bnl structure and store the sum of augend + addend. Reutrns NULL on failure to allocate mem
 bnl *bin_add(bnl *augend, bnl *addend){
 
-    bnl *sum;
-    char *n;
-    int size = augend->len+addend->len;
 
-    if((sum=init(size)) == NULL )
+    char *n;
+    int i; 
+    int sum_len;
+    int carry;
+    bnl *sum;
+
+
+    sum_len= augend->len+addend->len;
+
+    if((sum=init(sum_len)) == NULL )
         return NULL;
 
-    if ((n=(char *)malloc(sizeof(char) * size)) == NULL)
+    if ((n=(char *)malloc(sizeof(char) * sum_len)) == NULL)
         return NULL;
 
     sum->nstr = n;
-    sum->len = size;
+    sum->len = sum_len;
     
+    //loop through each pair of digits
+    for(i=0;i<augend->len;i++){
+        
+        if( *(augend->nstr+i) == '1' && *(addend->nstr+i) == '1' ){
+            printf("both strings bits are set at pos %d\n", i);    
+
+        }//if
+
+    }//for
+
 
     return sum;
 
