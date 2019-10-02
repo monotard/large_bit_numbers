@@ -15,7 +15,7 @@ int main(int argc, char **argv){
 
     y = init(100);
      
-    printf("%c \n", *(y->nstr));
+//    printf("%c \n", *(y->nstr));
     return 0;
 
 }

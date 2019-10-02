@@ -18,7 +18,7 @@ bnl *init(int len){
 
     p->len = len;
     p->nstr = n;
-    *(p->nstr) = 'A';
+
     return p;
     
 
