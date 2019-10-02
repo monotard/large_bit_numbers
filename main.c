@@ -1,7 +1,6 @@
 
 
 #include <stdio.h> // printf etc
-#include <stdlib.h>   //malloc 
 #include "bnl.h"
 
 
