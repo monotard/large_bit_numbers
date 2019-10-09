@@ -1,11 +1,13 @@
 
 
 
+#define POS 1
+#define NEG 0
 
 typedef struct {
     char *nstr;
-    int len;
-
+    int blen;
+    int sign;
 }bnl;
 
 bnl *bin_add(bnl *a, bnl *b);

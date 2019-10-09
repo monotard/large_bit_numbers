@@ -16,14 +16,15 @@ bnl *init(int len){
     if ((p = (bnl *)malloc(sizeof(bnl))) == NULL )
         return NULL;
 
-    p->len = len;
+    p->blen = len;
     p->nstr = n;
 
     return p;
     
 
 }
-
+#define BIT_SET '1'
+#define PAD_LEN 1  // pad_len added zeros to the new sum num
 //create a new bnl structure and store the sum of augend + addend. Reutrns NULL on failure to allocate mem
 bnl *bin_add(bnl *augend, bnl *addend){
 
@@ -35,7 +36,7 @@ bnl *bin_add(bnl *augend, bnl *addend){
     bnl *sum;
 
 
-    sum_len= augend->len+addend->len;
+    sum_len= augend->blen+PAD_LEN;
 
     if((sum=init(sum_len)) == NULL )
         return NULL;
@@ -44,16 +45,29 @@ bnl *bin_add(bnl *augend, bnl *addend){
         return NULL;
 
     sum->nstr = n;
-    sum->len = sum_len;
+    sum->blen = sum_len;
     
     //loop through each pair of digits
-    for(i=0;i<augend->len;i++){
+    for(i=0;i<augend->blen;i++){
         
-        if( *(augend->nstr+i) == '1' && *(addend->nstr+i) == '1' ){
-            printf("both strings bits are set at pos %d\n", i);    
+        if( *(augend->nstr+i) == 1 
+            && *(addend->nstr+i) == 1 ){
+        printf("both strings bits are set at pos %d\n", i); 
+    
+            if (carry){
+                //if bits r set and carry
+                *(sum->nstr+i) = BIT_SET;
+                
+
+            }
+            else if (!carry) {
+                //bits r set but not carry
+                carry=1;
+                *(sum->nstr+i) = BIT_SET;
+            }
 
         }//if
-
+    
     }//for
 
 
