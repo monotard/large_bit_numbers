@@ -4,6 +4,14 @@
 
 
 
+
+char band(char a, char b) {
+    
+    if (a && b)
+        return 1;
+    return 0;
+}
+
 // initialise a binary number structure  with length len
 bnl *init(int len){
     
