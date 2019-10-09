@@ -2,8 +2,18 @@
 #include <stdlib.h>
 #include "bnl.h"
 
+char bxor(char a, char b){
 
+    if(a == b)
+        return 0;
+    if(a || b)
+        return 1;
+}
 
+char bnot(char a){
+ 
+    return !a;
+}
 
 char band(char a, char b) {
     

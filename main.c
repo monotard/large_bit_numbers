@@ -27,6 +27,7 @@ int main(int argc, char **argv){
     if(band(m,m))
         printf("badd success\n");
 
+    printf("%d \n", bxor(1,0));
 //    printf("%c \n", *(y->nstr));
     return 0;
 

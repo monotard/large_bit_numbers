@@ -13,5 +13,8 @@ typedef struct {
 bnl *bin_add(bnl *a, bnl *b);
 char *b_add(char *, char *, int len);
 char band(char, char);
+char bnot(char);
+char bxor(char, char);
+char bor(char, char);
 
 bnl *init(int len);
