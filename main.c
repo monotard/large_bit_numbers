@@ -28,8 +28,10 @@ int main(int argc, char **argv){
    
     msbprint(y);
     msbprint(x);
-
     msbprint(z);
+
+    w = initcpy(x, 32);
+    msbprint(w);
     return 0;
 
 }

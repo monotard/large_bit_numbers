@@ -67,9 +67,12 @@ bnl *initcpy(bnl *old, int len){
     bnl *new;
 
     new = init(len);
-    
+    for(i=0;i<old->blen;i++){
+        *(new->nstr+i) = *(old->nstr+i);
+    }
     return new;
 }
+
 //finds the the appropriate length of two strns
 int findlen(int l1, int l2){
     int size;
