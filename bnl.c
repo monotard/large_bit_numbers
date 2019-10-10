@@ -21,6 +21,24 @@ char band(char a, char b) {
         return 1;
     return 0;
 }
+#define PADLEN 4
+void msbprint(bnl *n){
+
+    int i;
+    int cur = 0;
+
+    for(i=(n->blen)-1;i>-1;i--){
+        if(cur==4){
+            printf(" "); 
+            //*(n->nstr+i));
+            cur =0;
+        }
+        printf("%d", *(n->nstr+i));
+        cur++;
+       
+    }//for
+    printf("\n");
+}
 
 // initialise a binary number structure  with length len
 bnl *init(int len){
@@ -54,7 +72,7 @@ bnl *bin_add(bnl *augend, bnl *addend){
     bnl *sum;
 
 
-    sum_len= augend->blen+PAD_LEN;
+    sum_len= augend->blen+PADLEN;
 
     if((sum=init(sum_len)) == NULL )
         return NULL;
@@ -74,21 +92,25 @@ bnl *bin_add(bnl *augend, bnl *addend){
     
             if (carry){
                 //if bits r set and carry
-                *(sum->nstr+i) = BIT_SET;
+                *(sum->nstr+i) = 1;
                 
 
             }
             else if (!carry) {
                 //bits r set but not carry
                 carry=1;
-                *(sum->nstr+i) = BIT_SET;
+                *(sum->nstr+i) = 1;
             }
 
         }//if
         else if ( *(augend->nstr+i) || *(addend->nstr+i)){
-            printf("one of them are set\n");
+            //one bit is set 0+1 = 1
+            carry=0;
+            *(sum->nstr+i) = 1;
         }//else if
-
+        else {
+            *(sum->nstr+i) = 0;
+        }//else
 
     }//for
 

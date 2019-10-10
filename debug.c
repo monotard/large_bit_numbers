@@ -8,30 +8,35 @@
 int main(int argc, char **argv){
 
 
-    bnl *z;
+    bnl *z, *y, *x;
     char *a;
     char *b;
-    
+    char m = 1;
+    char n = 0;
 
-    
-    z = init(10);
-    printf("%d\n", z->len);
+    a = (char *)malloc(sizeof(int) *1);
 
-    a = (char *)malloc(sizeof(char) * 3);
-    
+    y = init(100);
+    x = init(100);
+    *(x->nstr+0) = 0;
+    *(x->nstr+0) = 0;
+    *(y->nstr+0) = 1;
 
-    a[0] = 'A';
-    a[1] = '0';
-    a[2] =  NULL;
+    *(y->nstr+1) = 1;
+    z = bin_add(y,y);
+    z = bin_add(y,x); 
+    *a = 1;
+    if(*a)
+        printf("bit is set\n");
+    if(band(m,m))
+        printf("badd success\n");
 
-    while(*a != NULL){
-        printf("%c ", *a++);
-    }
+int i;
+    printf("%d \n", bxor(1,0));
+//    printf("%c \n", *(y->nstr));
+    for(i=0;i<100;i++)
+        printf("%d", *(z->nstr+i));
 
-    printf("\ndone\n");
-    
-    if (*a==NULL)
-        printf("yes its null\n");
     return 0;
 
 }

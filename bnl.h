@@ -12,6 +12,8 @@ typedef struct {
 
 bnl *bin_add(bnl *a, bnl *b);
 char *b_add(char *, char *, int len);
+void msbprint(bnl *);;
+
 char band(char, char);
 char bnot(char);
 char bxor(char, char);
