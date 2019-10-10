@@ -8,7 +8,7 @@
 int main(int argc, char **argv){
 
 
-    bnl *z, *y;
+    bnl *z, *y, *x;
     char *a;
     char *b;
     char m = 1;
@@ -17,10 +17,14 @@ int main(int argc, char **argv){
     a = (char *)malloc(sizeof(int) *1);
 
     y = init(100);
+    x = init(100);
+    *(x->nstr+0) = 0;
+    *(x->nstr+0) = 0;
     *(y->nstr+0) = 1;
+
     *(y->nstr+1) = 1;
     z = bin_add(y,y);
-    
+    z = bin_add(y,x); 
     *a = 1;
     if(*a)
         printf("bit is set\n");

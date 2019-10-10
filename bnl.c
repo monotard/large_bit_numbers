@@ -85,7 +85,11 @@ bnl *bin_add(bnl *augend, bnl *addend){
             }
 
         }//if
-    
+        else if ( *(augend->nstr+i) || *(addend->nstr+i)){
+            printf("one of them are set\n");
+        }//else if
+
+
     }//for
 
 
