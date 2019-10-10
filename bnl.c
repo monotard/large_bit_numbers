@@ -93,23 +93,32 @@ bnl *bin_add(bnl *augend, bnl *addend){
             if (carry){
                 //if bits r set and carry
                 *(sum->nstr+i) = 1;
-                
+               carry=1; 
 
             }
             else if (!carry) {
                 //bits r set but not carry
                 carry=1;
-                *(sum->nstr+i) = 1;
+                *(sum->nstr+i) = 0;
             }
 
         }//if
         else if ( *(augend->nstr+i) || *(addend->nstr+i)){
             //one bit is set 0+1 = 1
-            carry=0;
-            *(sum->nstr+i) = 1;
+            if(carry) { 
+            carry=1;
+            *(sum->nstr+i) = 0;
+            }
+            if(!carry) {
+                *(sum->nstr+i) = 1;
+            }
         }//else if
         else {
-            *(sum->nstr+i) = 0;
+            if (carry) {
+            *(sum->nstr+i) = 1;
+            carry = 0;
+            }
+            else *(sum->nstr+i) = 0;
         }//else
 
     }//for
