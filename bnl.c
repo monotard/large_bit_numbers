@@ -54,12 +54,22 @@ bnl *init(int len){
 
     p->blen = len;
     p->nstr = n;
+    zero(p);
 
     return p;
     
-
 }
 
+//creates a new bnl struct the length len and copies
+// all the bits from old and returns the new bbl
+bnl *initcpy(bnl *old, int len){
+    int i;
+    bnl *new;
+
+    new = init(len);
+    
+    return new;
+}
 //finds the the appropriate length of two strns
 int findlen(int l1, int l2){
     int size;
@@ -139,3 +149,11 @@ bnl *bin_add(bnl *augend, bnl *addend){
 
 }
 
+void zero(bnl *s){
+    int i;
+
+    for(i=0;i<s->blen;i++){
+        *(s->nstr+i) = 0;
+    }//for
+
+}
