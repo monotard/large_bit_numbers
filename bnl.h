@@ -13,6 +13,7 @@ typedef struct {
 bnl *bin_add(bnl *a, bnl *b);
 char *b_add(char *, char *, int len);
 void msbprint(bnl *);;
+int findlen(int, int);
 
 char band(char, char);
 char bnot(char);

@@ -17,16 +17,18 @@ int main(int argc, char **argv){
 
     a = (char *)malloc(sizeof(int) *1);
 
-    y = init(12);
-    x = init(12);
-    *(x->nstr+0) = 0;
-    *(x->nstr+1) = 0;
-    *(y->nstr+0) = 0;
-    *(y->nstr+1) = 1;
-    z = bin_add(y,y);
+    y = init(32);
+    x = init(16);
+    *(x->nstr+0) = 1;
+    *(x->nstr+15) = 1;
+    *(y->nstr+0) = 1;
+    *(y->nstr+31) = 1;
+    z = bin_add(x,y);
    
    
     msbprint(y);
+    msbprint(x);
+
     msbprint(z);
     return 0;
 

@@ -59,7 +59,18 @@ bnl *init(int len){
     
 
 }
-#define BIT_SET '1'
+
+//finds the the appropriate length of two strns
+int findlen(int l1, int l2){
+    int size;
+    if (l1==l2)
+        return l1;
+    if (l1>l2)
+        return l1;
+    return l2;
+}
+
+
 #define PAD_LEN 1  // pad_len added zeros to the new sum num
 //create a new bnl structure and store the sum of augend + addend. Reutrns NULL on failure to allocate mem
 bnl *bin_add(bnl *augend, bnl *addend){
@@ -72,7 +83,7 @@ bnl *bin_add(bnl *augend, bnl *addend){
     bnl *sum;
 
 
-    sum_len= augend->blen+PADLEN;
+    sum_len= findlen( augend->blen, addend->blen);
 
     if((sum=init(sum_len)) == NULL )
         return NULL;
