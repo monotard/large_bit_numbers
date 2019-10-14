@@ -61,15 +61,19 @@ bnl *init(int len){
 }
 
 //creates a new bnl struct the length len and copies
-// all the bits from old and returns the new bbl
+// all the bits from old and returns the new bnl:
 bnl *initcpy(bnl *old, int len){
     int i;
     bnl *new;
 
     new = init(len);
+    new->blen = len;
+    new->sign = old->sign;
+
     for(i=0;i<old->blen;i++){
         *(new->nstr+i) = *(old->nstr+i);
     }
+    
     return new;
 }
 
@@ -95,8 +99,17 @@ bnl *bin_add(bnl *augend, bnl *addend){
     int carry;
     bnl *sum;
 
+    //are both number the same length? CHECK
+    if(augend->blen > addend->blen)
+        addend = initcpy(addend, augend->blen);
+
+    if(addend->blen > augend->blen)
+        augend = initcpy(augend, addend->blen);
 
     sum_len= findlen( augend->blen, addend->blen);
+    printf("size is %d\n", sum_len);
+    
+
 
     if((sum=init(sum_len)) == NULL )
         return NULL;
