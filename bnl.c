@@ -73,7 +73,7 @@ bnl *initcpy(bnl *old, int len){
     for(i=0;i<old->blen;i++){
         *(new->nstr+i) = *(old->nstr+i);
     }
-    
+    //free(old);    
     return new;
 }
 
@@ -97,16 +97,23 @@ bnl *bin_add(bnl *augend, bnl *addend){
     int i; 
     int sum_len;
     int carry;
+    int lastbit;
     bnl *sum;
 
     //are both number the same length? CHECK
-    if(augend->blen > addend->blen)
+    if(augend->blen > addend->blen){
         addend = initcpy(addend, augend->blen);
 
-    if(addend->blen > augend->blen)
+    }
+
+    if(addend->blen > augend->blen){
         augend = initcpy(augend, addend->blen);
 
+    }
+
     sum_len= findlen( augend->blen, addend->blen);
+    lastbit = sum_len-1;
+
     printf("size is %d\n", sum_len);
     
 
@@ -121,25 +128,35 @@ bnl *bin_add(bnl *augend, bnl *addend){
     sum->blen = sum_len;
     
     //loop through each pair of digits
-    for(i=0;i<augend->blen;i++){
+    for(i=0;i<sum_len;i++){
         
         if( *(augend->nstr+i) == 1 
             && *(addend->nstr+i) == 1 ){
-        printf("both strings bits are set at pos %d\n", i); 
-    
+        
+
             if (carry){
+                if(i==lastbit){
+                sum = dyn_add(sum, 1, 1);
+                break;
+                }
                 //if bits r set and carry
                 *(sum->nstr+i) = 1;
-               carry=1; 
+                carry=1; 
 
             }
             else if (!carry) {
+                if(i==lastbit){
+                sum = dyn_add(sum, 0, 1);
+                break;
+                }
                 //bits r set but not carry
                 carry=1;
                 *(sum->nstr+i) = 0;
             }
 
-        }//if
+        }//if under the for
+
+        //is augend or addend but not both
         else if ( *(augend->nstr+i) || *(addend->nstr+i)){
             //one bit is set 0+1 = 1
             if(carry) { 
@@ -150,6 +167,7 @@ bnl *bin_add(bnl *augend, bnl *addend){
                 *(sum->nstr+i) = 1;
             }
         }//else if
+        //if both are 0 (unset)
         else {
             if (carry) {
             *(sum->nstr+i) = 1;
@@ -171,5 +189,19 @@ void zero(bnl *s){
     for(i=0;i<s->blen;i++){
         *(s->nstr+i) = 0;
     }//for
+
+}
+//will dynam8cally add 4 bits to tue MSB end and
+//set last bit next bit or both and retirn a new struct
+bnl *dyn_add(bnl *n, int last, int newlast){
+    bnl *new;
+
+    new = initcpy(n, n->blen+4);
+    if(last)
+        *(new->nstr+n->blen-1) = 1;
+    if(newlast)
+        *(new->nstr+n->blen) = 1;
+
+    return new;
 
 }

@@ -17,21 +17,23 @@ int main(int argc, char **argv){
 
     a = (char *)malloc(sizeof(int) *1);
 
-    y = init(32);
-    x = init(16);
-    *(x->nstr+0) = 1;
-    *(x->nstr+15) = 1;
-    *(y->nstr+0) = 1;
-    *(y->nstr+31) = 1;
-    z = bin_add(x,y);
+    y = init(4);
+    x = init(8);
    
-   
-    msbprint(y);
-    msbprint(x);
-    msbprint(z);
 
-    w = initcpy(x, 32);
-    msbprint(w);
+    *(y->nstr+1) = 1;
+    *(y->nstr+2) = 1;
+    *(y->nstr+3) = 1;
+    *(x->nstr+7) = 1;
+    *(x->nstr+6) = 1;
+
+
+    z = bin_add(y,y);
+
+   
+    msbprint(x);
+    msbprint(y);
+    msbprint(z); 
     return 0;
 
 }
