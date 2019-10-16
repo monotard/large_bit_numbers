@@ -205,3 +205,33 @@ bnl *dyn_add(bnl *n, int last, int newlast){
     return new;
 
 }
+
+// a * b ->  p
+bnl *multiply(bnl *a, bnl *b){
+    
+    //check the length is good
+    int psize = findlen(a->blen, b->blen);
+    int abit, bbit, len;
+
+    bnl *p;
+
+    p = (bnl *)malloc(sizeof(char) * (psize));
+    zero(p);
+
+    for(abit=0;abit < ; abit++){
+        if(*(a->nstr+abit)== 1){
+            for(bbit=0;bbit<size;bbit++){
+                //add first line to p
+                //*(p+(bbit+abit)) = *(b+bbit);
+                if(*(b->nstr+bbit)==1)
+                    add(p, bbit+abit);
+
+
+            }//for
+        }// if
+    }//for
+
+    return p;
+}// end multiply
+
+

@@ -32,3 +32,8 @@ bnl *init(int len);
 bnl *initcpy(bnl *, int);
 
 bnl *dyn_add(bnl *, int, int);
+
+bnl *multiply(bnl *, bnl *);
+
+
+
