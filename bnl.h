@@ -32,7 +32,7 @@ bnl *init(int len);
 bnl *initcpy(bnl *, int);
 
 bnl *dyn_add(bnl *, int, int);
-
+//need to work on the binary multiply
 bnl *multiply(bnl *, bnl *);
 
 
