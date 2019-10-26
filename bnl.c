@@ -205,7 +205,7 @@ bnl *dyn_add(bnl *n, int last, int newlast){
     return new;
 
 }
-
+//*******CHECK PSIZE IS CORRECT and add comment ************
 // a * b ->  p
 bnl *multiply(bnl *a, bnl *b){
     
@@ -218,13 +218,13 @@ bnl *multiply(bnl *a, bnl *b){
     p = (bnl *)malloc(sizeof(char) * (psize));
     zero(p);
 
-    for(abit=0;abit < ; abit++){
+    for(abit=0;abit < psize  ; abit++){
         if(*(a->nstr+abit)== 1){
-            for(bbit=0;bbit<size;bbit++){
+            for(bbit=0;bbit< psize;bbit++){
                 //add first line to p
                 //*(p+(bbit+abit)) = *(b+bbit);
-                if(*(b->nstr+bbit)==1)
-                    add(p, bbit+abit);
+        //        if(*(b->nstr+bbit)==1)
+                   // add(p, bbit+abit);
 
 
             }//for

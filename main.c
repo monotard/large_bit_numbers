@@ -26,13 +26,17 @@ int main(int argc, char **argv){
     *(y->nstr+3) = 1;
     *(x->nstr+7) = 1;
     *(x->nstr+6) = 1;
+    *(x->nstr+1) = 1;
 
 
-    z = bin_add(y,y);
 
-   
+    z = bin_add(x,y);
+
+    printf("x = ");   
     msbprint(x);
+    printf("y = ");   
     msbprint(y);
+    printf("y + x  = ");   
     msbprint(z); 
     return 0;
 
